@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
 
+
 var MessageSchema = new mongoose.Schema({
-  sender: String, //VerifyToken,
-  //recipient: VerifyToken,
+  sender: String, //email
+  recipient: String, //email or username
   content: String
 });
 

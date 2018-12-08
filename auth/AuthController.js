@@ -10,6 +10,7 @@ var VerifyToken = require('./VerifyToken');
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 var User = require('../user/User');
+var MessageToken = require('./MessageToken');
 
 
 // Creates a new user with hashed password
@@ -39,6 +40,7 @@ router.post('/register', function(req, res) {
             expiresIn: 86400 // expires in 24 hours
           });
 
+          MessageToken.create({email : req.body.email, token : email});
           res.status(200).send({ auth: true, token: token});
         });
       }
@@ -70,6 +72,8 @@ router.post('/login', function(req, res) {
     var token = jwt.sign({ id: user._id }, config.secret, {
       expiresIn: 86400 //expires in 24 hours
     });
+
+    MessageToken.create({email : req.body.email, token : token});
 
     // return the information including token as JSON
     res.status(200).send({ auth: true, token: token });

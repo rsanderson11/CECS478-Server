@@ -40,8 +40,8 @@ router.post('/register', function(req, res) {
             expiresIn: 86400 // expires in 24 hours
           });
 
-          MessageToken.create({email : req.body.email, token : email});
-          res.status(200).send({ auth: true, token: token});
+          MessageToken.create({email: req.body.email, token: token});
+          res.status(200).send({auth: true, token: token});
         });
       }
       // If the user was found with the same email, return an error
@@ -64,27 +64,26 @@ router.post('/login', function(req, res) {
     // Check if password is valid
     var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
     if (!passwordIsValid) {
-      return res.status(401).send({ auth: false, token: null});
+      return res.status(401).send({auth: false, token: null});
     }
 
     // if user is found and password is valid
     // create token
-    var token = jwt.sign({ id: user._id }, config.secret, {
+    var token = jwt.sign({id: user._id}, config.secret, {
       expiresIn: 86400 //expires in 24 hours
     });
 
-    MessageToken.create({email : req.body.email, token : token});
+    MessageToken.create({email: req.body.email, token: token});
 
     // return the information including token as JSON
-    res.status(200).send({ auth: true, token: token });
+    res.status(200).send({auth: true, token: token});
   });
 });
 
 
 // Gets user id based on the token we got back from the register endpoint
 router.get('/me', VerifyToken, function(req, res, next) {
-
-  User.findById(req.userId, { password: 0 }, function (err, user) {
+  User.findById(req.userId, {password: 0}, function (err, user) {
     if (err) {
       return res.status(500).send("There was a problem finding the user.");
     }
@@ -97,7 +96,7 @@ router.get('/me', VerifyToken, function(req, res, next) {
 
 
 router.get('/logout', function(req, res) {
-  res.status(200).send({ auth: false, token: null });
+  res.status(200).send({auth: false, token: null});
 });
 
 

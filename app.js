@@ -10,17 +10,14 @@ var UserController = require('./user/UserController');
 app.use('/api/users', UserController);
 
 var AuthController = require('./auth/AuthController');
-// app.use('/api/auth', AuthController);
+app.use('/api/auth', AuthController);
 
 var MessageController = require('./message/MessageController');
-// app.use('/api/mess', MessageController);
+app.use('/api/mess', MessageController);
 
 app.get('/', function(req, res){
     res.send("DuoDolo");
-    app.use('/api/auth', AuthController);
-    app.use('/api/mess', MessageController);
-    // app.use('/registration', AuthController);
-    // app.use('/message', ChatController);
+    res.end();    
 });
 
 module.exports = app;

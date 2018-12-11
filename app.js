@@ -22,7 +22,7 @@ app.get('/', function(req, res) {
   app.use('api/auth', AuthController);
   app.use('api/mess', MessageController);
   app.use('api/users', UserController);
-})
+});
 
 
 

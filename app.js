@@ -1,7 +1,7 @@
 var express = require('express');
-const bodyParser = require("body-parser");
 var app = express();
 var db = require('./db');
+const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -21,7 +21,6 @@ app.get('/', function(req, res){
     app.use('/api/mess', MessageController);
     // app.use('/registration', AuthController);
     // app.use('/message', ChatController);
-    console.log("Server Running");
 });
 
 module.exports = app;

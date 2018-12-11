@@ -6,6 +6,8 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
+var port = process.env.PORT || 3000;
+
 var UserController = require('./user/UserController');
 app.use('/api/users', UserController);
 
@@ -15,9 +17,8 @@ app.use('/api/auth', AuthController);
 var MessageController = require('./message/MessageController');
 app.use('/api/mess', MessageController);
 
-app.get('/', function(req, res){
-    res.send("DuoDolo");
-    res.end();    
+app.listen(port, function() {
+  console.log('Express server listening on port ' + port);
 });
 
 module.exports = app;

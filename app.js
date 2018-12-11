@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var db = require('./db');
+
 const bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,6 +15,15 @@ app.use('/api/auth', AuthController);
 
 var MessageController = require('./message/MessageController');
 app.use('/api/mess', MessageController);
+
+
+app.get('/', function(req, res) {
+  res.render('app/auth');
+  res.render('app/mess');
+  res.render('app/users');
+})
+
+
 
 var port = 3000;
 app.listen(port, function() {

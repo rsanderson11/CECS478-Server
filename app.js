@@ -16,7 +16,7 @@ var MessageController = require('./message/MessageController');
 // app.use('/api/mess', MessageController);
 
 app.get('/', function(req, res){
-    res.send("Super Secure Bro");
+    res.send("DuoDolo");
     app.use('/api/auth', AuthController);
     app.use('/api/mess', MessageController);
     // app.use('/registration', AuthController);

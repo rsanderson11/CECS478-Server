@@ -17,11 +17,11 @@ var MessageController = require('./message/MessageController');
 app.use('/api/mess', MessageController);
 
 
-app.get('/', function(req, res) {
-  res.render('api/auth');
-  res.render('api/mess');
-  res.render('api/users');
-})
+// app.get('/', function(req, res) {
+//   res.render('app/auth');
+//   res.render('api/mess');
+//   res.render('api/users');
+// })
 
 
 

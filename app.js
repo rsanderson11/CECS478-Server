@@ -10,9 +10,18 @@ var UserController = require('./user/UserController');
 app.use('/api/users', UserController);
 
 var AuthController = require('./auth/AuthController');
-app.use('/api/auth', AuthController);
+// app.use('/api/auth', AuthController);
 
 var MessageController = require('./message/MessageController');
-app.use('/api/mess', MessageController);
+// app.use('/api/mess', MessageController);
+
+app.get('/', function(req, res){
+    res.send("Super Secure Bro");
+    app.use('/api/auth', AuthController);
+    app.use('/api/mess', MessageController);
+    // app.use('/registration', AuthController);
+    // app.use('/message', ChatController);
+    console.log("Server Running");
+});
 
 module.exports = app;

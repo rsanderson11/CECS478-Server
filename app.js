@@ -18,9 +18,9 @@ app.use('/api/mess', MessageController);
 
 
 app.get('/', function(req, res) {
-  res.render('app/auth');
-  res.render('app/mess');
-  res.render('app/users');
+  res.render('api/auth');
+  res.render('api/mess');
+  res.render('api/users');
 })
 
 

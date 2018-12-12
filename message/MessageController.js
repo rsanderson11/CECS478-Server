@@ -44,7 +44,7 @@ router.get('/receive', VerifyToken, function(req, res) {
       }
       res.status(200).send(message);
     });
-    Message.find({recipient: user.email}).remove().exec();
+    // Message.find({recipient: user.email}).remove().exec();
   });
 });
 

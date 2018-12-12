@@ -18,7 +18,7 @@ var MessageController = require('./message/MessageController');
 
 
 app.get('/', function(req, res) {
-  res.send("Dolittle DA");
+  res.send("DuoDolo Messaging");
   app.use('api/auth', AuthController);
   app.use('api/mess', MessageController);
   app.use('api/users', UserController);

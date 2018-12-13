@@ -2,28 +2,20 @@ var express = require('express');
 var app = express();
 var db = require('./db');
 
-// const bodyParser = require("body-parser");
 
-// app.use(bodyParser.urlencoded({extended: true}));
-// app.use(bodyParser.json());
-
+// Require the different controllers used for operating the application
 var UserController = require('./user/UserController');
-// app.use('/api/users', UserController);
-
 var AuthController = require('./auth/AuthController');
-// app.use('/api/auth', AuthController);
-
 var MessageController = require('./message/MessageController');
-// app.use('/api/mess', MessageController);
 
 
+// Activate the controllers with specific base routes
 app.get('/', function(req, res) {
   res.send("DuoDolo Messaging");
   app.use('api/auth', AuthController);
   app.use('api/mess', MessageController);
   app.use('api/users', UserController);
 });
-
 
 
 var port = 3000;

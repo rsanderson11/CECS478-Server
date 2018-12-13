@@ -2,12 +2,12 @@ var express = require('express');
 var router = express.Router();
 var bodyParser = require('body-parser');
 var VerifyToken = require('../auth/VerifyToken');
-
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 var User = require('./User');
 
-// Creates a new user
+
+// Creates a new User and posts to the database
 router.post('/', function(req, res) {
   User.create({
     name: req.body.name,
@@ -32,7 +32,7 @@ router.get('/', function (req, res) {
   });
 });
 
-// Gets a single user from the database
+// Gets a single user from the database with the matching id
 router.get('/:id', function (req, res) {
   User.findById(req.params.id, function (err, user) {
     if (err) {
@@ -45,7 +45,7 @@ router.get('/:id', function (req, res) {
   });
 });
 
-// Deletes a user form the database
+// Deletes a user from the database with the matching id
 router.delete('/:id', function (req, res) {
   User.findByIdAndRemove(req.params.id, function (err, user) {
     if (err) {
@@ -55,7 +55,7 @@ router.delete('/:id', function (req, res) {
   });
 });
 
-// Updates a single user in the database
+// Updates a single user in the database with the matching id
 router.put('/:id', function (req, res) {
   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, function (err, user) {
     if (err) {

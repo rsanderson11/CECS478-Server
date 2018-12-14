@@ -59,7 +59,7 @@ router.get('/receive', VerifyToken, function(req, res) {
       res.status(200).send(message);
     });
     // Deletes messages from the database after it is viewed by the user
-    // Message.find({recipient: user.email}).remove().exec();
+    Message.find({recipient: user.email}).remove().exec();
   });
 });
 
